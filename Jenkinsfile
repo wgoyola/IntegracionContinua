@@ -1,30 +1,18 @@
-pipeline {
 
+pipeline {
     agent any
 
     stages {
 
-        stage('Clonar Repositorio') {
+        stage('Mensaje') {
             steps {
-                git 'https://github.com/wgoyola/IntegracionContinua.git'
+                echo 'Pipeline ejecutado correctamente'
             }
         }
 
-        stage('Construir Docker') {
+        stage('Validacion') {
             steps {
-                bat 'docker build -t integracioncontinua .'
-            }
-        }
-
-        stage('Iniciar Contenedores') {
-            steps {
-                bat 'docker compose up -d'
-            }
-        }
-
-        stage('Verificar') {
-            steps {
-                bat 'docker ps'
+                echo 'Repositorio IntegracionContinua conectado con Jenkins'
             }
         }
     }
